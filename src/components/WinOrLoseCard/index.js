@@ -3,10 +3,7 @@ import './index.css'
 
 const WinOrLoseCard = props => {
   const {text, count, onPlayAgain} = props
-  const imgUrl =
-    text === 'your Loose'
-      ? 'https://assets.ccbp.in/frontend/react-js/lose-game-img.png'
-      : 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
+
   const playAgain = () => {
     onPlayAgain()
   }
@@ -21,7 +18,18 @@ const WinOrLoseCard = props => {
         </button>
       </div>
       <div className="con1">
-        <img src={imgUrl} alt="one" />
+        {text === 'You Won' && (
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/won-game-img.png"
+            alt="win or lose"
+          />
+        )}
+        {text === 'You Lose' && (
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/lose-game-img.png"
+            alt="win or lose"
+          />
+        )}
       </div>
     </div>
   )

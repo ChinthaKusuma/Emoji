@@ -26,6 +26,7 @@ class EmojiGame extends Component {
 
     card: false,
     text: ' ',
+    isWon: 'one',
   }
 
   getShuffledEmojisList = () => {
@@ -36,26 +37,20 @@ class EmojiGame extends Component {
 
   onPlayAgain = () => {
     const {count, score} = this.state
+    this.setState({
+      emojisList1: true,
+      emojis: [],
+
+      count: 0,
+
+      card: false,
+      text: ' ',
+      isWon: 'false',
+    })
+
     if (count > score) {
       this.setState({
-        emojisList1: true,
-        emojis: [],
-
         score: count,
-        count: 0,
-
-        card: false,
-        text: ' ',
-      })
-    } else {
-      this.setState({
-        emojisList1: true,
-        emojis: [],
-        count: 0,
-        score,
-
-        card: false,
-        text: ' ',
       })
     }
   }
@@ -77,28 +72,29 @@ class EmojiGame extends Component {
         count: prevState.count + 1,
       }))
       if (emojis.length >= 11) {
-        this.setState({
+        this.setState(prevState => ({
           card: true,
-          text: 'Your Win',
-        })
+          isWon: true,
+          text: 'You Won',
+        }))
       }
     } else {
-      this.setState({
+      this.setState(prevState => ({
         card: true,
-        text: 'Your Loose',
-      })
+        text: 'You Lose',
+      }))
     }
   }
 
   render() {
     const shuffledEmojisList = this.getShuffledEmojisList()
-    const {emojis, count, score, card, text} = this.state
+    const {emojis, count, score, card, text, isWon} = this.state
 
     console.log(emojis)
 
     return (
       <div className="bgContainer">
-        <NavBar count={count} score={score} />
+        <NavBar count={count} score={score} isWon={isWon} />
 
         {card === false && (
           <ul className="container1">

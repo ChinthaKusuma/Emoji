@@ -8,11 +8,11 @@ const EmojiCard = props => {
     emojiChange(id)
   }
 
-  const {emojiUrl} = item
+  const {emojiUrl, emojiName} = item
   return (
     <li>
       <button className="btn1" type="button" onClick={onClickEmoji}>
-        <img src={emojiUrl} alt="emoji" />
+        <img src={emojiUrl} alt={emojiName} />
       </button>
     </li>
   )
