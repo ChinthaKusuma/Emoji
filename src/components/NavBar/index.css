@@ -1,0 +1,19 @@
+/* Write your code here. */
+.nav_bar {
+  padding: 15px;
+  width: 100%;
+  background-image: transparent;
+  background-color: grey;
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.para {
+  margin-right: 20px;
+}
+.one {
+  display: flex;
+}
